@@ -18,6 +18,35 @@ It is advisable that you also take the first six digits and figure out if the da
 matches the date of birth on in their South African ID Document number.
 
 
+```java
+public class IDValidator
+{
+ private static int generateLuhnDigit(String inputString)
+ {
+  int total = 0;
+  int count = 0;
+  for (int i = 0; i < inputString.length(); i++)
+  {
+   int multiple = count % 2 + 1;
+   count++;
+   int temp = multiple * Integer.parseInt(""+inputString.charAt(i));
+   temp = (int)(Math.floor(temp / 10) + (temp % 10));
+   total += temp;
+  }
+
+  total = (total * 9) % 10;
+
+  return total;
+ };
+
+ public static boolean checkIDNumber(String idNumber)
+ {
+  String number = idNumber.substring(0, idNumber.length() - 1);
+  return generateLuhnDigit(number) == Integer.parseInt(""+idNumber.charAt(idNumber.length() - 1));
+ }
+}
+```
+
 ## Using PHP how do I get the JSON back on 400+ status returns with Guzzle?
 
 If you are integrating using PHP, you may want to use [Guzzle](http://docs.guzzlephp.org/en/latest/) for implementing remote web requests.  You can easily install it using composer.
