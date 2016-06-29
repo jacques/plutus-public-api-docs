@@ -33,6 +33,9 @@ X-Request-ID: 9d45fcf7-ca4e-4146-a344-6421ef90cbe0
 
 ## API Repsonse Statuses
 
+It is expected that your application will process the error statuses and work on correcting the issue with your forms.  It is highly
+advisable to do form validation and make sure that yur forms are validated before submitting to the API.
+
 ### Status Codes
 
 Key | Value
