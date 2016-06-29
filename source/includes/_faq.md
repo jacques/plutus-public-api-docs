@@ -7,6 +7,8 @@ sample code from the following URL's:
 
 [Sample code for Java and PHP](http://knowles.co.za/generating-south-african-id-numbers/)
 
+For testing purposes, you can utilise the following ID numbers when adding a user via the API.
+
 | ID Number | Notes |
 |---------------|--------------|
 | 8510290194083 | Valid ID Number   |
