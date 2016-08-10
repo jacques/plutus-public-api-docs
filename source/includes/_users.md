@@ -229,4 +229,60 @@ curl -X POST "https://127.0.0.1.xip.io/api/v1/users/5370faea-ec41-11e5-b754-13ac
 
 Parameter | Description
 --------- | -----------
-USER | The UUID of the user to tombstone
+USER | The UUID of the user to resend the SMS message to
+
+## Search Users (Customers)
+
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users?first_name=Clifton"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "ok",
+  "details": [
+    {
+      "uuid": "9ee3314c-40dd-11e5-9bc4-1bbf7f69525d",
+      "title": "MR",
+      "first_name": "CLIFTON MARIO",
+      "last_name": "HERADIEN",
+      "id_type": "ZAID",
+      "id_document_number": "12345678901",
+      "mobile_number": "271234567890"
+    },
+    ...
+  ]
+}
+```
+
+This endpoint retrieves all users which can be paginated over via the API.
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+limit | 100 | Specifies the maximum number of users to fetch
+offset | 0 | Starts from the first user up to limit users
+first_name | | If specified searches for the users first name
+last_name | | If specified searches for the users surname
+id_type | ZAID | Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)
+id_document_number | | Searches for the given government ID
+
+### Response Result Set
+
+Parameter | Type | Description
+--------- | ---- | -----------
+uuid | string (36) | UUID of the user
+title | string (4) | Title of the user (i.e. Mr / Mrs / Ms / Dr / Prof)
+first_name | string (64) | First names of the user (needs to be in CAPITALS for the juristic person)
+last_name | string (64) | Surname of the user (needs to be in CAPITALS for the juristic person)
+id_type | enum | Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)
+id_document_number | string (32) | Document number associated with the supplied Identification Document Type (i.e. for ZAID you supply the South African ID number / PASSPORT you supply the passport number)
