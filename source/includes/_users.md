@@ -275,6 +275,7 @@ first_name | | If specified searches for the users first name
 last_name | | If specified searches for the users surname
 id_type | ZAID | Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)
 id_document_number | | Searches for the given government ID
+mobile_number | | If specified searches for the given mobile number
 
 ### Response Result Set
 
@@ -286,3 +287,4 @@ first_name | string (64) | First names of the user (needs to be in CAPITALS for 
 last_name | string (64) | Surname of the user (needs to be in CAPITALS for the juristic person)
 id_type | enum | Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)
 id_document_number | string (32) | Document number associated with the supplied Identification Document Type (i.e. for ZAID you supply the South African ID number / PASSPORT you supply the passport number)
+mobile_number | integer | MSISDN for the user in E.164 format (minus the leading +)
