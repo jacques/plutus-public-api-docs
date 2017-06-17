@@ -11,8 +11,6 @@ curl "api_endpoint_here"
   -H "Content-Type: application/json"
 ```
 
-> Example with PHP  of setting the headers:
-
 ```php
 <?php
 ...
