@@ -26,7 +26,7 @@ request['authorization'] = 'Token token=YOURTOKEN'
 request.content_type = "application/json"
 ```
 
-```node
+```nodejs
 request({
     headers: {
       'Authorization': 'Token token=YOURTOKEN',
@@ -37,6 +37,9 @@ request({
   }, function (err, res, body) {
     //it works!
   });
+```
+
+```java
 ```
 
 > Make sure to replace `YOURTOKEN` with your API key.
