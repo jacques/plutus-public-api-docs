@@ -25,6 +25,7 @@ includes:
   - prepaid
   - errors
   - faq
+  - glossary
 
 search: true
 ---
