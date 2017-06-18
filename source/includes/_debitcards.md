@@ -27,8 +27,8 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "b5c0b0b8-9c9d-11e4-afbc-f3a644f22402",
             "description": "Jacques Freedom MasterCard",
             "account_type": "debitcard",
-            "balance": "122.68",
-            "available_balance": "122.68",
+            "balance": "12268",
+            "available_balance": "12268",
             "masked_cardnumber": "123456XXXXXX0434"
         },
         {
@@ -36,8 +36,8 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
             "description": "Jacques Diamond MasterCard",
             "account_type": "debitcard",
-            "balance": "987.65",
-            "available_balance": "99.66",
+            "balance": "98765",
+            "available_balance": "9966",
             "masked_cardnumber": "123456XXXXXX0657"
         }
     ]
@@ -64,8 +64,8 @@ uuid | string (36) | UUID of the wallet
 account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
 description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
 account_type | enum | `debitcard` for debit card
-balance | currency | Amount of money in the balance (including items with a preauth)
-available_balance | currency | Amount of funds available (excluding preauths)
+balance | integer | Amount of money in cents in the ledger / actual balance (including items with a preauth)
+available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
 masked_cardnumber | varchar(16) | Masked card number
 
 There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
@@ -90,6 +90,8 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
             "description": "Jacques Debit Card",
             "account_type": "debitcard",
+            "balance": "98765",
+            "available_balance": "9966",
             "masked_cardnumber": "123456XXXXXX0657"
         }
     ]
@@ -104,15 +106,10 @@ This endpoint allows for issuing of debit cards to a user.  Additional debit car
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-USER | The UUID of the user whose debit cards you would like to retrieve
-
-### JSON Payload Parameters
-
 Parameter  | Type | Description
 ---------  | ---- | -----------
-cardnumber | integer | Primary Account Number of the Card
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to report as lost / stolen
 
 ### Response Result Set
 
@@ -122,7 +119,9 @@ uuid | string (36) | UUID of the wallet
 account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
 description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
 account_type | enum | `debitcard` for debit card
-balance | integer | balance of the debit card in cents
+balance | integer | Amount of money in cents in the ledger / actual balance (including items with a preauth)
+available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
+masked_cardnumber | varchar(16) | Masked card number
 
 ## Fetch mini statement for a debit card
 
@@ -132,7 +131,16 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
   -H "Content-Type: application/json"
 ```
 
-Available in the near future.
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/ministatement`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to view the transactions for
 
 ## Fetch statement for a debit card
 
@@ -142,7 +150,16 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
   -H "Content-Type: application/json"
 ```
 
-Available in the near future.
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/transactions`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to view the transactions for
 
 ## Report debit card as being lost / stolen
 
@@ -154,6 +171,13 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
 
 Available in the near future.  Please note on Mercantile Cards once a card is marked to the Postilion Hotcard List it cannot be reversed.  A new card would need to be issued in this case.
 
-Parameter | Description
---------- | -----------
-USER | The UUID of the user whose debit cards you would like to retrieve
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/stopcard`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to report as lost / stolen
