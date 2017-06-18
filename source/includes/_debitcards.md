@@ -29,7 +29,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "account_type": "debitcard",
             "balance": "122.68",
             "available_balance": "122.68",
-            "masked_cardnumber": "531162XXXXXX0434"
+            "masked_cardnumber": "123456XXXXXX0434"
         },
         {
             "account_number": "53230966296",
@@ -38,7 +38,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "account_type": "debitcard",
             "balance": "987.65",
             "available_balance": "99.66",
-            "masked_cardnumber": "531162XXXXXX0657"
+            "masked_cardnumber": "123456XXXXXX0657"
         }
     ]
 }
@@ -90,7 +90,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
             "description": "Jacques Debit Card",
             "account_type": "debitcard",
-            "masked_cardnumber": "531162XXXXXX0657"
+            "masked_cardnumber": "123456XXXXXX0657"
         }
     ]
 }
