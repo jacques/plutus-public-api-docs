@@ -27,6 +27,8 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "b5c0b0b8-9c9d-11e4-afbc-f3a644f22402",
             "description": "Jacques Freedom MasterCard",
             "account_type": "debitcard",
+            "balance": "122.68",
+            "available_balance": "122.68",
             "masked_cardnumber": "531162XXXXXX0434"
         },
         {
@@ -34,6 +36,8 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
             "description": "Jacques Diamond MasterCard",
             "account_type": "debitcard",
+            "balance": "987.65",
+            "available_balance": "99.66",
             "masked_cardnumber": "531162XXXXXX0657"
         }
     ]
@@ -60,6 +64,8 @@ uuid | string (36) | UUID of the wallet
 account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
 description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
 account_type | enum | `debitcard` for debit card
+balance | currency | Amount of money in the balance (including items with a preauth)
+available_balance | currency | Amount of funds available (excluding preauths)
 masked_cardnumber | varchar(16) | Masked card number
 
 There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
