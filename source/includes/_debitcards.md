@@ -69,7 +69,60 @@ available_balance | integer | Amount of money in cents in the available balance 
 masked_cardnumber | varchar(16) | Masked card number
 
 There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
-Need to also display the sponsoring bank for a debit card as well (i.e. Mercantile Bank vs Standard Bank);
+Need to also display the sponsoring bank for a debit card as well (Bank A vs Bank B).
+
+## List Debit Card allocated to a User
+
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/e7d03afc-27f7-11e5-b016-bba1668567bc"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "details": {
+        "account_number": "53230966296",
+        "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
+        "description": "Jacques Diamond MasterCard",
+        "account_type": "debitcard",
+        "balance": "98765",
+        "available_balance": "9966",
+        "masked_cardnumber": "123456XXXXXX0657"
+    }
+}
+```
+
+This endpoint retrieves the specified debit card belonging to the specific user.
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+USER | The UUID of the user whose debit cards you would like to retrieve
+CARD | The UUID of the debit cards you would like to retrieve
+
+### Response Result Set
+
+Parameter | Type | Description
+--------- | ---- | -----------
+uuid | string (36) | UUID of the wallet
+account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
+description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
+account_type | enum | `debitcard` for debit card
+balance | integer | Amount of money in cents in the ledger / actual balance (including items with a preauth)
+available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
+masked_cardnumber | varchar(16) | Masked card number
+
+There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
+Need to also display the sponsoring bank for a debit card as well (Bank A vs Bank B).
 
 ## Issue a Debit Card
 
