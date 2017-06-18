@@ -185,12 +185,25 @@ CARD | The UUID of the users debit card you would like to view the transactions 
 ## Report debit card as being lost / stolen
 
 ```shell
-curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/stopcard"
+curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/stopcard"
   -H "Authorization: Token token=YOURTOKEN"
   -H "Content-Type: application/json"
 ```
 
-Available in the near future.  Please note once a card is marked to the Postilion Hotcard List it cannot be reversed.  A new card would need to be issued in this case.
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "ok",
+    "message": "Card has been stopped."
+}
+```
+
+This endpoint allows for stopping of a debit card belong to a user.  You can at a later stage issue a replacement card to the user.
+
+<aside class="notice">
+Please note once a card is marked to the Postilion Hotcard List it cannot be reversed.  A new card would need to be issued in this case.
+</aside>
 
 ### HTTP Request
 
