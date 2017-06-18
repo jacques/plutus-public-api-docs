@@ -96,7 +96,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
 }
 ```
 
-This endpoint retrieves a collection of debit cards belonging to the specific user.
+This endpoint allows for issuing of debit cards to a user.  Additional debit cards are added as secondary cards on the users profile.
 
 ### HTTP Request
 
