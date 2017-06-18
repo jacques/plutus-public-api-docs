@@ -4,7 +4,7 @@ title: Plutus Platform API Reference
 language_tabs:
   - shell
   - php
-  - nodejs
+  - javascript
   - ruby
   - java
 

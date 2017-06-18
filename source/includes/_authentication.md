@@ -26,7 +26,7 @@ request['authorization'] = 'Token token=YOURTOKEN'
 request.content_type = "application/json"
 ```
 
-```nodejs
+```javascript
 request({
     headers: {
       'Authorization': 'Token token=YOURTOKEN',
