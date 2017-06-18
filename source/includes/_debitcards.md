@@ -124,10 +124,89 @@ masked_cardnumber | varchar(16) | Masked card number
 There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
 Need to also display the sponsoring bank for a debit card as well (Bank A vs Bank B).
 
+## Fetch mini statement for a debit card
+
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/ministatement"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+```
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/ministatement`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to view the transactions for
+
+## Fetch statement for a Debit Card
+
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/statement/30"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+```
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/statement/<DAYS>`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to view the transactions for
+DAYS | The number of days you want a statement for 30 / 60 / 90 / 180 days
+
+## Fetch transaction history for a Debit Card
+
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/transactions"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+```
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/transactions`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to view the transactions for
+
+## Report debit card as being lost / stolen
+
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/stopcard"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+```
+
+Available in the near future.  Please note once a card is marked to the Postilion Hotcard List it cannot be reversed.  A new card would need to be issued in this case.
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/stopcard`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to report as lost / stolen
+
 ## Issue a Debit Card
 
 ```shell
-curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards"
+curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards"
   -H "Authorization: Token token=YOURTOKEN"
   -H "Content-Type: application/json"
 ```
@@ -176,61 +255,23 @@ balance | integer | Amount of money in cents in the ledger / actual balance (inc
 available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
 masked_cardnumber | varchar(16) | Masked card number
 
-## Fetch mini statement for a debit card
+## Replace a Debit Card
 
-```shell
-curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/ministatement"
-  -H "Authorization: Token token=YOURTOKEN"
-  -H "Content-Type: application/json"
+```json
+{
+    "status": "ok",
+    "details": [
+        {
+            "account_number": "53230966296",
+            "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
+            "description": "Jacques Debit Card",
+            "account_type": "debitcard",
+            "balance": "98765",
+            "available_balance": "9966",
+            "masked_cardnumber": "123456XXXXXX0657"
+        }
+    ]
+}
 ```
 
-### HTTP Request
-
-`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/ministatement`
-
-### URL Parameters
-
-Parameter  | Type | Description
----------  | ---- | -----------
-USER | The UUID of the user whose debit card you would like to retrieve
-CARD | The UUID of the users debit card you would like to view the transactions for
-
-## Fetch statement for a debit card
-
-```shell
-curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/transactions"
-  -H "Authorization: Token token=YOURTOKEN"
-  -H "Content-Type: application/json"
-```
-
-### HTTP Request
-
-`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/transactions`
-
-### URL Parameters
-
-Parameter  | Type | Description
----------  | ---- | -----------
-USER | The UUID of the user whose debit card you would like to retrieve
-CARD | The UUID of the users debit card you would like to view the transactions for
-
-## Report debit card as being lost / stolen
-
-```shell
-curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/stopcard"
-  -H "Authorization: Token token=YOURTOKEN"
-  -H "Content-Type: application/json"
-```
-
-Available in the near future.  Please note on Mercantile Cards once a card is marked to the Postilion Hotcard List it cannot be reversed.  A new card would need to be issued in this case.
-
-### HTTP Request
-
-`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/stopcard`
-
-### URL Parameters
-
-Parameter  | Type | Description
----------  | ---- | -----------
-USER | The UUID of the user whose debit card you would like to retrieve
-CARD | The UUID of the users debit card you would like to report as lost / stolen
+Dependant on which sponsor bank is being utilised, cards a user has may be restricted to a ringfenced group.  If an error occurs on replacement, contact the Call Centre.
