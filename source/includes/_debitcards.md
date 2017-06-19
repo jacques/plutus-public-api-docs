@@ -219,9 +219,10 @@ CARD | The UUID of the users debit card you would like to report as lost / stole
 ## Issue a Debit Card
 
 ```shell
-curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards"
+curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/issue"
   -H "Authorization: Token token=YOURTOKEN"
   -H "Content-Type: application/json"
+  -d '{"cardnumber":"12345678901234","sequence_number":"123456"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -243,11 +244,11 @@ curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba9
 }
 ```
 
-This endpoint allows for issuing of debit cards to a user.  Additional debit cards are added as secondary cards on the users profile.
+This endpoint allows for issuing of a debit card to a user.  Additional debit cards are added as secondary cards on the users profile.
 
 ### HTTP Request
 
-`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards`
+`POST https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards`
 
 ### URL Parameters
 
@@ -270,6 +271,14 @@ masked_cardnumber | varchar(16) | Masked card number
 
 ## Replace a Debit Card
 
+
+```shell
+curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/e7d03afc-27f7-11e5-b016-bba1668567bc/replace"
+  -H "Authorization: Token token=YOURTOKEN"
+  -H "Content-Type: application/json"
+  -d '{"cardnumber":"12345678901234","sequence_number":"123456"}'
+```
+
 ```json
 {
     "status": "ok",
@@ -287,4 +296,24 @@ masked_cardnumber | varchar(16) | Masked card number
 }
 ```
 
+This endpoint allows for replacing of a debit card belong to a user.
+
+<aside class="notice">
 Dependant on which sponsor bank is being utilised, cards a user has may be restricted to a ringfenced group.  If an error occurs on replacement, contact the Call Centre.
+</aside>
+
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/replace`
+
+### URL Parameters
+
+Parameter  | Type | Description
+---------  | ---- | -----------
+USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to report as lost / stolen
+
+### Response Result Set
+
+Parameter | Type | Description
+--------- | ---- | -----------
