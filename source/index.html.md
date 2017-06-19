@@ -17,6 +17,7 @@ includes:
   - introduction
   - authentication
   - users
+  - documents
   - wallets
   - debitcards
   - beneficiaries
