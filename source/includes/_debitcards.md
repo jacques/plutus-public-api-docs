@@ -171,6 +171,50 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
   -H "Content-Type: application/json"
 ```
 
+> The above command returns JSON structured like this:
+
+## Example of customer with no transactions in the past 180 days
+
+```
+{
+  "status": "ok",
+  "details": {
+    "account": {
+      "account_number": "53231234567",
+      "uuid": "4f9a869e-5cd3-11e7-bf63-7396dac0ab8a",
+      "description": "Vimala Debitcard",
+      "account_type": "debitcard",
+      "balance": 5000,
+      "available_balance": 5000,
+      "masked_card_number": "123456XXXXXX2345"
+    },
+    "transactions": [
+        ...
+    ]
+  }
+}
+```
+
+## Example of customer with no transactions in the past 180 days
+
+```
+{
+  "status": "ok",
+  "details": {
+    "account": {
+      "account_number": "53231234567",
+      "uuid": "4f9a869e-5cd3-11e7-bf63-7396dac0ab8a",
+      "description": "Gandalf Debitcard",
+      "account_type": "debitcard",
+      "balance": 0,
+      "available_balance": 0,
+      "masked_card_number": "123456XXXXXX1234"
+    },
+    "transactions": []
+  }
+}
+```
+
 ### HTTP Request
 
 `GET https://127.0.0.1.xip.io/api/v1/users/<USER>/debitcards/<CARD>/transactions`
