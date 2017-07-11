@@ -192,8 +192,8 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
         {
             "txn_ref": "jcb7aqlm",
             "description": "Admin fee for primary card for year 2017 and month of June",
-            "debit": -25500,
-            "credit":0,
+            "debit": -2500,
+            "credit": 0,
             "processed_at": "2017-06-30 23:13:16",
             "cleared_at": "2017-06-30 23:13:16"
         },
