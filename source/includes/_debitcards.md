@@ -266,7 +266,6 @@ Please note once a card is marked to the Postilion Hotcard List it cannot be rev
 Parameter  | Type | Description
 ---------  | ---- | -----------
 USER | The UUID of the user whose debit card you would like to retrieve
-CARD | The UUID of the users debit card you would like to report as lost / stolen
 
 ## Issue a Debit Card
 
@@ -282,17 +281,12 @@ curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba9
 ```json
 {
     "status": "ok",
-    "details": [
-        {
-            "account_number": "53230966296",
-            "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
-            "description": "Jacques Debit Card",
-            "account_type": "debitcard",
-            "balance": "98765",
-            "available_balance": "9966",
-            "masked_cardnumber": "123456XXXXXX0657"
-        }
-    ]
+    "details": {
+        "account_number": "53231672318",
+        "uuid": "c12451bc-66fd-11e7-8b56-eea0a39cd77b",
+        "sequence_number": "86218",
+        "masked_card_number": "531162XXXXXX5932"
+    }
 }
 ```
 
