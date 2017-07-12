@@ -232,7 +232,6 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
 Parameter  | Type | Description
 ---------  | ---- | -----------
 USER | The UUID of the user whose debit card you would like to retrieve
-CARD | The UUID of the users debit card you would like to view the transactions for
 
 ## Report debit card as being lost / stolen
 
@@ -266,6 +265,7 @@ Please note once a card is marked to the Postilion Hotcard List it cannot be rev
 Parameter  | Type | Description
 ---------  | ---- | -----------
 USER | The UUID of the user whose debit card you would like to retrieve
+CARD | The UUID of the users debit card you would like to view the transactions for
 
 ## Issue a Debit Card
 
@@ -284,7 +284,6 @@ curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba9
     "details": {
         "account_number": "53231672318",
         "uuid": "c12451bc-66fd-11e7-8b56-eea0a39cd77b",
-        "sequence_number": "86218",
         "masked_card_number": "531162XXXXXX5932"
     }
 }
@@ -301,7 +300,6 @@ This endpoint allows for issuing of a debit card to a user.  Additional debit ca
 Parameter  | Type | Description
 ---------  | ---- | -----------
 USER | The UUID of the user whose debit card you would like to retrieve
-CARD | The UUID of the users debit card you would like to report as lost / stolen
 
 ### Response Result Set
 
@@ -309,10 +307,6 @@ Parameter | Type | Description
 --------- | ---- | -----------
 uuid | string (36) | UUID of the wallet
 account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
-description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
-account_type | enum | `debitcard` for debit card
-balance | integer | Amount of money in cents in the ledger / actual balance (including items with a preauth)
-available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
 masked_cardnumber | varchar(16) | Masked card number
 
 ## Replace a Debit Card
