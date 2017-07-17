@@ -1,7 +1,7 @@
 ---
 title: Plutus Platform API Reference
 
-language_tabs:
+language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - php
   - javascript
