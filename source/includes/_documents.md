@@ -119,4 +119,17 @@ created_at | datetime | Datetime in GMT that the file was uploaded
 
 ## Download a Document
 
+```shell
+curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/documents/895b2fcc-545f-11e7-8279-67635886d357"
+```
 
+### HTTP Request
+
+`GET https://127.0.0.1.xip.io/api/v1/users/<USER>/documents/<DOCUMENT>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+USER | The UUID of the user who you want to download a document of
+DOCUMENT | The UUID of the document you want to download
