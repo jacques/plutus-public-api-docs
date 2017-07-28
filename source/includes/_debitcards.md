@@ -175,7 +175,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
 
 ## Example of customer with no transactions in the past 180 days
 
-```
+```json
 {
   "status": "ok",
   "details": {
@@ -205,7 +205,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
 
 ## Example of customer with no transactions in the past 180 days
 
-```
+```json
 {
   "status": "ok",
   "details": {

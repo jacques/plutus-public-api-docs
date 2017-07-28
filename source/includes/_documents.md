@@ -27,7 +27,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
     },
     {
       "uuid": "8a9e349c-545f-11e7-9a2b-273aed7d1a54",
-      "document_type: 2,
+      "document_type": 2,
       "file_name": "16517ff6-c74f-11e6-ab92-1708c4dea62c - POA - GOVID - Vin Diesel.pdf",
       "file_hash": "78d6405718fda873f99a60b722138451c136576c9f665139e0de0d78cc4be6ff",
       "file_size": 1640282,
