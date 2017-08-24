@@ -147,8 +147,9 @@ curl -X POST "https://127.0.0.1.xip.io/api/v1/companies/UUID/payments"
 }
 ```
 
-This endpoint creates a new customer on the Plutus Platform.  During the process a wallet is create for the customer.
-If autoload settings are not specified, the  defaults listed below are utilised.
+This endpoint is used to create payment batches for release on the Plutus Platform.  It supposed both On Net (i.e. to other users on the platform)
+or Off Net (i.e. to an off platform bank account such as a vendors bank account at any bank).  The branch code 000000 indicates that the payment
+is an On Net payment.  `account_type` should be 1 for an On Net transaction and `branch_code` 000000.
 
 ### HTTP Request
 
