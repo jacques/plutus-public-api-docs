@@ -159,7 +159,20 @@ is an On Net payment.  `account_type` should be 1 for an On Net transaction and 
 
 Parameter | Description
 --------- | -----------
-UUID | The UUID of the company to retrieve
+UUID | The UUID of the company to load payment instructions against
+
+### JSON Payload Parameters
+
+Uses an array of arrays of the following parameters.  Expects to find 1 or more arrays with the following keys:
+
+Parameter | Type | Description
+--------- | ---- | -----------
+branch_code | string(6) | Branch code (i.e. 000000 for On Net, 580105 for Investec, etc.)
+account_type | integer | Bank Account Type. 1 == Current / Cheque Account | 2 == Savings account | 3 == Transmission account.  Use 1 for On Net Payments.
+account_number | integer | The bank account number or wallet account number for the recipient of the payment
+reference1 | string(16) | This is the reference that goes onto your business accounts statement
+reference2 | string(16) | This is the reference that goes onto your beneficiaries accounts statement
+amount | integer | Amount of money to pay over to the recipient in ZAR cents
 
 ## Get Payment Batches
 
