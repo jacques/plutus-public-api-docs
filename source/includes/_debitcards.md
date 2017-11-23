@@ -27,6 +27,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "b5c0b0b8-9c9d-11e4-afbc-f3a644f22402",
             "description": "Jacques Freedom MasterCard",
             "account_type": "debitcard",
+            "currency": "710",
             "balance": "12268",
             "available_balance": "12268",
             "masked_cardnumber": "123456XXXXXX0434"
@@ -36,6 +37,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
             "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
             "description": "Jacques Diamond MasterCard",
             "account_type": "debitcard",
+            "currency": "710",
             "balance": "98765",
             "available_balance": "9966",
             "masked_cardnumber": "123456XXXXXX0657"
@@ -64,6 +66,7 @@ uuid | string (36) | UUID of the wallet
 account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
 description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
 account_type | enum | `debitcard` for debit card
+currency | integer | ISO4217 Code Number
 balance | integer | Amount of money in cents in the ledger / actual balance (including items with a preauth)
 available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
 masked_cardnumber | varchar(16) | Masked card number
@@ -89,6 +92,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
         "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
         "description": "Jacques Diamond MasterCard",
         "account_type": "debitcard",
+        "currency": "710",
         "balance": "98765",
         "available_balance": "9966",
         "masked_cardnumber": "123456XXXXXX0657"
@@ -117,6 +121,7 @@ uuid | string (36) | UUID of the wallet
 account_number | integer | Account number for the debit card (this is not the account number on the debit card but our internal identifier)
 description | string (64) | Description of the wallet (i.e Firstname's Debit Card)
 account_type | enum | `debitcard` for debit card
+currency | integer | ISO4217 Code Number
 balance | integer | Amount of money in cents in the ledger / actual balance (including items with a preauth)
 available_balance | integer | Amount of money in cents in the available balance (excluding preauths)
 masked_cardnumber | varchar(16) | Masked card number
@@ -184,6 +189,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
       "uuid": "4f9a869e-5cd3-11e7-bf63-7396dac0ab8a",
       "description": "Vimala Debitcard",
       "account_type": "debitcard",
+      "currency": "710",
       "balance": 5000,
       "available_balance": 5000,
       "masked_card_number": "123456XXXXXX2345"
@@ -214,6 +220,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
       "uuid": "4f9a869e-5cd3-11e7-bf63-7396dac0ab8a",
       "description": "Gandalf Debitcard",
       "account_type": "debitcard",
+      "currency": "710",
       "balance": 0,
       "available_balance": 0,
       "masked_card_number": "123456XXXXXX1234"
@@ -328,6 +335,7 @@ curl -X POST "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba9
             "uuid": "e7d03afc-27f7-11e5-b016-bba1668567bc",
             "description": "Jacques Debit Card",
             "account_type": "debitcard",
+            "currency": "710",
             "balance": "98765",
             "available_balance": "9966",
             "masked_cardnumber": "123456XXXXXX0657"
