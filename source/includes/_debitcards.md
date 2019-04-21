@@ -166,7 +166,7 @@ Parameter  | Type | Description
 ---------  | ---- | -----------
 USER | The UUID of the user whose debit card you would like to retrieve
 CARD | The UUID of the users debit card you would like to view the transactions for
-DAYS | The number of days you want a statement for 30 / 60 / 90 / 180 days
+DAYS | The number of days you want a statement for 30 / 60 / 90 days
 
 ## Fetch transaction history for a Debit Card
 
@@ -209,7 +209,7 @@ curl "https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e
 }
 ```
 
-## Example of customer with no transactions in the past 180 days
+## Example of customer with no transactions in the past 90 days
 
 ```json
 {
@@ -306,7 +306,7 @@ This endpoint allows for issuing of a debit card to a user.  Additional debit ca
 
 Parameter  | Type | Description
 ---------  | ---- | -----------
-USER | The UUID of the user whose debit card you would like to retrieve
+USER | The UUID of the user to whom you wish to issue a debit cards
 
 ### Response Result Set
 
