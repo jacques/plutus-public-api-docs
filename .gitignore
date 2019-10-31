@@ -25,3 +25,6 @@ doc/
 
 # Bundler
 vendor/
+
+# Vagrant artifacts
+ubuntu-*-console.log
