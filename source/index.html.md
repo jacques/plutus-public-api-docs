@@ -30,4 +30,6 @@ includes:
   - glossary
 
 search: true
+
+code_clipboard: true
 ---
