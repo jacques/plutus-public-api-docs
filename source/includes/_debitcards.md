@@ -1,6 +1,8 @@
 # Debitcards
 
-The system provides interfaces for management of Prepaid debit cards.
+The system provides interfaces for management of Prepaid debit cards.  Not all prepaid
+debit card providers provide access to real time transactional information and card
+balances.
 
 <aside class="notice">
 On test we do not provide an idea of the balances for a card.  This will be added
