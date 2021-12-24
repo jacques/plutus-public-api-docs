@@ -25,6 +25,7 @@ includes:
   - companies
   - businessaccounts
   - prepaid
+  - products
   - errors
   - faq
   - glossary
