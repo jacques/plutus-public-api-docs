@@ -35,7 +35,9 @@ code_clipboard: true
 
 meta:
   - name: author
-    content: Jacques Marneweck
+    content: Jacques Marneweck // Siberia
+  - name: copyright
+    content: 2015-2021 Jacques Marneweck.  All rights strictly reserved.
   - name: description
     content: Documentation for the Plutus Public API
 ---
