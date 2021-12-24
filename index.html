@@ -1,0 +1,3232 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jacques Marneweck // Siberia">
+    <meta name="copyright" content="2015-2021 Jacques Marneweck.  All rights strictly reserved.">
+    <title>Plutus Platform API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-a9fde460.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;java&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="java">java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#api-request-identifiers" class="toc-h2 toc-link" data-title="API Request Identifiers">API Request Identifiers</a>
+                  </li>
+                  <li>
+                    <a href="#api-repsonse-statuses" class="toc-h2 toc-link" data-title="API Repsonse Statuses">API Repsonse Statuses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-users-customers" class="toc-h2 toc-link" data-title="Get All Users (Customers)">Get All Users (Customers)</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-user" class="toc-h2 toc-link" data-title="Get a Specific User">Get a Specific User</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-customer" class="toc-h2 toc-link" data-title="Create a customer">Create a customer</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-customer" class="toc-h2 toc-link" data-title="Delete a customer">Delete a customer</a>
+                  </li>
+                  <li>
+                    <a href="#resend-welcome-sms" class="toc-h2 toc-link" data-title="Resend Welcome SMS">Resend Welcome SMS</a>
+                  </li>
+                  <li>
+                    <a href="#search-users-customers" class="toc-h2 toc-link" data-title="Search Users (Customers)">Search Users (Customers)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#documents" class="toc-h1 toc-link" data-title="Documents">Documents</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-documents-for-a-user" class="toc-h2 toc-link" data-title="List Documents for a User">List Documents for a User</a>
+                  </li>
+                  <li>
+                    <a href="#upload-a-document" class="toc-h2 toc-link" data-title="Upload a Document">Upload a Document</a>
+                  </li>
+                  <li>
+                    <a href="#download-a-document" class="toc-h2 toc-link" data-title="Download a Document">Download a Document</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#wallets" class="toc-h1 toc-link" data-title="Wallets">Wallets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listing-wallets-for-a-user" class="toc-h2 toc-link" data-title="Listing wallets for a user">Listing wallets for a user</a>
+                  </li>
+                  <li>
+                    <a href="#fetching-a-mini-statement-for-a-users-wallet" class="toc-h2 toc-link" data-title="Fetching a mini statement for a users wallet">Fetching a mini statement for a users wallet</a>
+                  </li>
+                  <li>
+                    <a href="#listing-transactions-for-a-users-wallet" class="toc-h2 toc-link" data-title="Listing transactions for a users wallet">Listing transactions for a users wallet</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#debitcards" class="toc-h1 toc-link" data-title="Debitcards">Debitcards</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-debit-cards-allocated-to-a-user" class="toc-h2 toc-link" data-title="List Debit Cards allocated to a User">List Debit Cards allocated to a User</a>
+                  </li>
+                  <li>
+                    <a href="#list-debit-card-allocated-to-a-user" class="toc-h2 toc-link" data-title="List Debit Card allocated to a User">List Debit Card allocated to a User</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-mini-statement-for-a-debit-card" class="toc-h2 toc-link" data-title="Fetch mini statement for a debit card">Fetch mini statement for a debit card</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-statement-for-a-debit-card" class="toc-h2 toc-link" data-title="Fetch statement for a Debit Card">Fetch statement for a Debit Card</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-transaction-history-for-a-debit-card" class="toc-h2 toc-link" data-title="Fetch transaction history for a Debit Card">Fetch transaction history for a Debit Card</a>
+                  </li>
+                  <li>
+                    <a href="#example-of-customer-with-no-transactions-in-the-past-180-days" class="toc-h2 toc-link" data-title="Example of customer with no transactions in the past 180 days">Example of customer with no transactions in the past 180 days</a>
+                  </li>
+                  <li>
+                    <a href="#example-of-customer-with-no-transactions-in-the-past-90-days" class="toc-h2 toc-link" data-title="Example of customer with no transactions in the past 90 days">Example of customer with no transactions in the past 90 days</a>
+                  </li>
+                  <li>
+                    <a href="#report-debit-card-as-being-lost-stolen" class="toc-h2 toc-link" data-title="Report debit card as being lost / stolen">Report debit card as being lost / stolen</a>
+                  </li>
+                  <li>
+                    <a href="#issue-a-debit-card" class="toc-h2 toc-link" data-title="Issue a Debit Card">Issue a Debit Card</a>
+                  </li>
+                  <li>
+                    <a href="#replace-a-debit-card" class="toc-h2 toc-link" data-title="Replace a Debit Card">Replace a Debit Card</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#beneficiaries" class="toc-h1 toc-link" data-title="Beneficiaries">Beneficiaries</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-beneficiaries-for-a-user" class="toc-h2 toc-link" data-title="List Beneficiaries for a User">List Beneficiaries for a User</a>
+                  </li>
+                  <li>
+                    <a href="#create-beneficiary" class="toc-h2 toc-link" data-title="Create Beneficiary">Create Beneficiary</a>
+                  </li>
+                  <li>
+                    <a href="#delete-beneficiary" class="toc-h2 toc-link" data-title="Delete Beneficiary">Delete Beneficiary</a>
+                  </li>
+                  <li>
+                    <a href="#pay-a-beneficiary" class="toc-h2 toc-link" data-title="Pay a Beneficiary">Pay a Beneficiary</a>
+                  </li>
+                  <li>
+                    <a href="#list-banks-for-use-when-creating-a-beneficiary" class="toc-h2 toc-link" data-title="List Banks (for use when creating a beneficiary)">List Banks (for use when creating a beneficiary)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#companies" class="toc-h1 toc-link" data-title="Companies">Companies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-companies-customers" class="toc-h2 toc-link" data-title="Get All Companies (Customers)">Get All Companies (Customers)</a>
+                  </li>
+                  <li>
+                    <a href="#create-payments-for-release" class="toc-h2 toc-link" data-title="Create payments for release">Create payments for release</a>
+                  </li>
+                  <li>
+                    <a href="#get-payment-batches" class="toc-h2 toc-link" data-title="Get Payment Batches">Get Payment Batches</a>
+                  </li>
+                  <li>
+                    <a href="#get-payment-batch-status" class="toc-h2 toc-link" data-title="Get Payment Batch Status">Get Payment Batch Status</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#business-accounts" class="toc-h1 toc-link" data-title="Business Accounts">Business Accounts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listing-business-accounts-for-a-company" class="toc-h2 toc-link" data-title="Listing business accounts for a company">Listing business accounts for a company</a>
+                  </li>
+                  <li>
+                    <a href="#listing-transactions-for-a-company-39-s-business-account" class="toc-h2 toc-link" data-title="Listing transactions for a company's business account">Listing transactions for a company's business account</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#prepaid" class="toc-h1 toc-link" data-title="Prepaid">Prepaid</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-mobile-networks" class="toc-h2 toc-link" data-title="List mobile networks">List mobile networks</a>
+                  </li>
+                  <li>
+                    <a href="#list-available-vouchers-for-a-network" class="toc-h2 toc-link" data-title="List available vouchers for a network">List available vouchers for a network</a>
+                  </li>
+                  <li>
+                    <a href="#vend-an-airtime-voucher" class="toc-h2 toc-link" data-title="Vend an airtime voucher">Vend an airtime voucher</a>
+                  </li>
+                  <li>
+                    <a href="#vend-pinless-airtime" class="toc-h2 toc-link" data-title="Vend pinless airtime">Vend pinless airtime</a>
+                  </li>
+                  <li>
+                    <a href="#lookup-electricity-customer-information" class="toc-h2 toc-link" data-title="Lookup Electricity Customer Information">Lookup Electricity Customer Information</a>
+                  </li>
+                  <li>
+                    <a href="#vend-electricity-sts-token" class="toc-h2 toc-link" data-title="Vend Electricity STS Token">Vend Electricity STS Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="Frequently Asked Questions">Frequently Asked Questions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#how-do-i-validate-a-south-african-identification-number" class="toc-h2 toc-link" data-title="How do I validate a South African Identification Number?">How do I validate a South African Identification Number?</a>
+                  </li>
+                  <li>
+                    <a href="#using-php-how-do-i-get-the-json-back-on-400-status-returns-with-guzzle" class="toc-h2 toc-link" data-title="Using PHP how do I get the JSON back on 400+ status returns with Guzzle?">Using PHP how do I get the JSON back on 400+ status returns with Guzzle?</a>
+                  </li>
+                  <li>
+                    <a href="#using-java-how-do-i-get-the-json-back-on-400-status-returns" class="toc-h2 toc-link" data-title="Using Java how do I get the JSON back on 400+ status returns?">Using Java how do I get the JSON back on 400+ status returns?</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#glossary" class="toc-h1 toc-link" data-title="Glossary">Glossary</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://secure.imogo.co.za/'>IMOGO Platform Login</a></li>
+            <li><a href='https://secure.diamondcash.co.za/'>Diamond Cash Platform Login</a></li>
+            <li><a href='https://secure.iamfin.com/'>I Am Fintech Platform Login</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Plutus Platform API! You can use our API to access Plutus Platform API endpoints, for transactional banking via your platform partner.</p>
+
+<p><strong>THIS DOCUMENT IS SUBJECT TO CHANGE</strong></p>
+
+<p>You can view code examples in the dark area to the right.</p>
+
+<p>If you have any queries about the Plutus Platform API, please direct them to support at transactionafrica dot co dot za.</p>
+
+<p>Our API uses JSON payloads over HTTPS and returns JSON payloads back.</p>
+<h2 id='pagination'>Pagination</h2>
+<p>Pagination works on collections of models (i.e. users, transactions history, accounts, etc.)</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of users to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit users</td>
+</tr>
+</tbody></table>
+<h2 id='api-request-identifiers'>API Request Identifiers</h2>
+<p>All API calls return a X-Request-ID which should be provided for when debugging issues you experience.</p>
+
+<blockquote>
+<p>Example of headers:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>X-Request-ID: 9d45fcf7-ca4e-4146-a344-6421ef90cbe0
+</code></pre></div><h2 id='api-repsonse-statuses'>API Repsonse Statuses</h2>
+<p>It is expected that your application will process the error statuses and work on correcting the issue with your forms.  It is highly
+advisable to do form validation and make sure that yur forms are validated before submitting to the API.</p>
+<h3 id='status-codes'>Status Codes</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ok</td>
+<td>Response is ok (i.e. retrieved the requested resource which is then contained in the details key in the returned JSON response.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Something went wrong (i.e. missing required parameters or the resource requested does not exist.)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example of a successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ee3314c-40dd-11e5-9bc4-1bbf7f69525d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOHN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RABIE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271234567890"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9df55274-40dd-11e5-be41-033d23a48a0e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MICHAEL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TUCKER"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271234567891"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example of an unsuccessful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You cannot transact until you provide your FICA documentation to the call center.  Contact 08610 46664."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='authentication'>Authentication</h1>
+<p>Pass in the <code>Authorization</code> header in with a <code>Token token=YOURTOKEN</code> as part of the HTTP request being sent into the API for processing.</p>
+
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="mf">...</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">_ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s1">'Authorization: Token token='</span> <span class="mf">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">,</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+<span class="p">]);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'https://127.0.0.1.xip.io/api/v1/users'</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s1">'authorization'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Token token=YOURTOKEN'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">request</span><span class="p">({</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token token=YOURTOKEN</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">uri</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://127.0.0.1.xip.io/api/v1/users</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span>
+  <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//it works!</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code></code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>YOURTOKEN</code> with your API key.</p>
+</blockquote>
+
+<p>The Plutus Platform uses API keys to allow access to the API. You can register a new Plutus Platform API key via your Sales Manager.</p>
+
+<p>Plutus expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Token token=YOURTOKEN</code></p>
+
+<aside class="notice">
+You must replace <code>YOURTOKEN</code> with your program API key.
+</aside>
+
+<aside class="notice">
+Please do not share your Plutus Platform credentials as they unlock sensitive resources, such as transaction histories for your customers and can perform instructions your apps receive on behalf of a customer such as making payments.
+</aside>
+<h1 id='users'>Users</h1><h2 id='get-all-users-customers'>Get All Users (Customers)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ee3314c-40dd-11e5-9bc4-1bbf7f69525d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLIFTON MARIO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HERADIEN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAID"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id_document_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271234567890"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9df55274-40dd-11e5-be41-033d23a48a0e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TIM"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COLMAN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAID"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id_document_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271234567891"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all users which can be paginated over via the API.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of users to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit users</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string (4)</td>
+<td>Title of the user (i.e. Mr / Mrs / Ms / Dr / Prof)</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string (64)</td>
+<td>First names of the user (needs to be in CAPITALS for the juristic person)</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string (64)</td>
+<td>Surname of the user (needs to be in CAPITALS for the juristic person)</td>
+</tr>
+<tr>
+<td>id_type</td>
+<td>enum</td>
+<td>Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)</td>
+</tr>
+<tr>
+<td>id_document_number</td>
+<td>string (32)</td>
+<td>Document number associated with the supplied Identification Document Type (i.e. for ZAID you supply the South African ID number / PASSPORT you supply the passport number)</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-user'>Get a Specific User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ee3314c-40dd-11e5-9bc4-1bbf7f69525d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cliff12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLIFTON MARIO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HERADIEN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"autoload_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"autoload_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fica_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tandc_accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-15 21:54:01"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific user.  Additional information about users is available through Basecamp.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string (4)</td>
+<td>Title of the user (i.e. MR / MRS / MS / DR / PROF)</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string (64)</td>
+<td>First names of the user (needs to be in CAPITALS for the juristic person)</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string (64)</td>
+<td>Surname of the user (needs to be in CAPITALS for the juristic person)</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>date</td>
+<td>Date of birth of the user</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>string (1)</td>
+<td>Gender of the user (i.e. f == female</td>
+</tr>
+<tr>
+<td>mobile_number</td>
+<td>integer</td>
+<td>MSISDN for the user in E.164 format (minus the leading +)</td>
+</tr>
+<tr>
+<td>autoload_type</td>
+<td>enum</td>
+<td>Autoload type to use when deposits are made into the user&#39;s wallet (percentage == a percentage gets autoloaded</td>
+</tr>
+<tr>
+<td>autoload_value</td>
+<td>integer</td>
+<td>When autoload_type == percentage in a range of 0 to 100.  When autoload_type == monetary the amount &gt; the value will trigger the transaction to autoload the value to the card)</td>
+</tr>
+<tr>
+<td>fica_status</td>
+<td>integer</td>
+<td>The FICA status for the user (0 == No FICA document supplied / 1 == South African ID / Passport / Asylum Document provided and KYC complaince offer has approved the document</td>
+</tr>
+<tr>
+<td>tandc_accepted_at</td>
+<td>date time</td>
+<td>The date the user accepted the terms and conditions</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-customer'>Create a customer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/users"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-d</span> <span class="s1">'{"title":"MRS","first_name":"CHERYL","last_name":"SERFONTEIN","date_of_birth":"1970-01-01","gender":"f","id_type":"ZAID","id_document_number":"7001010101081","address1_type":"work","address1_street1":"7th Floor, West Tower, Canal Walk Shopping Center","address1_street2":"Century City Boulevard, Century City","address1_suburb":"Milnerton","address1_city":"Cape Town","address1_province":"ZA-WC","address1_postalcode":"7490","address1_country":"ZA",mobile_number":"08012345679"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="s2">"2b1c1f24-c5ff-11e5-99c3-5a8f9bcf73ec"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="s2">"53224172946"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates a new customer on the Plutus Platform.  During the process a wallet is created for the customer.
+If autoload settings are not specified, the defaults listed below are utilised.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://127.0.0.1.xip.io/api/v1/users</code></p>
+<h3 id='json-payload-parameters'>JSON Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string (4)</td>
+<td>Title of the user (i.e. MR / MRS / MS / DR / PROF)</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string (64)</td>
+<td>First names of the user</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string (64)</td>
+<td>Surname of the user</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>date</td>
+<td>Date of birth of the user</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>string (1)</td>
+<td>Gender of the user (i.e. f == female / m == male)</td>
+</tr>
+<tr>
+<td>id_type</td>
+<td>string</td>
+<td>Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)</td>
+</tr>
+<tr>
+<td>id_document_number</td>
+<td>string (32)</td>
+<td>The document number for the given identification type</td>
+</tr>
+<tr>
+<td>passport_expiration_date</td>
+<td>date</td>
+<td>Date of expiration of the passport <strong>REQUIRED IF id_type IS PASSPORT</strong></td>
+</tr>
+<tr>
+<td>passport_country</td>
+<td>string (2)</td>
+<td><a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166 Alpha 2 code</a> for the country <strong>REQUIRED IF id_type IS PASSPORT</strong></td>
+</tr>
+<tr>
+<td>asylum_expiration_date</td>
+<td>date</td>
+<td>Date of expiration of the South African Asylum Document <strong>REQUIRED IF id_type IS ZAASYLUM</strong></td>
+</tr>
+<tr>
+<td>address1_type</td>
+<td>enum</td>
+<td><strong>home</strong> for home address / <strong>work</strong> for employers address</td>
+</tr>
+<tr>
+<td>address1_street1</td>
+<td>string (64)</td>
+<td>Street Address</td>
+</tr>
+<tr>
+<td>address1_street2</td>
+<td>string (64)</td>
+<td>Street Address cont. <strong>OPTIONAL</strong></td>
+</tr>
+<tr>
+<td>address1_suburb</td>
+<td>string (64)</td>
+<td>Suburb</td>
+</tr>
+<tr>
+<td>address1_city</td>
+<td>string (64)</td>
+<td>Name of the City or Town</td>
+</tr>
+<tr>
+<td>address1_province</td>
+<td>string (6)</td>
+<td><a href="https://en.wikipedia.org/wiki/ISO_3166-2:ZA">ISO 3166-2 ZA code</a></td>
+</tr>
+<tr>
+<td>address1_postalcode</td>
+<td>string (4)</td>
+<td>Postal Codes for South Africa</td>
+</tr>
+<tr>
+<td>address1_country</td>
+<td>string (2)</td>
+<td><a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166 Alpha 2 code</a> for the country</td>
+</tr>
+<tr>
+<td>mobile_number</td>
+<td>integer</td>
+<td>MSISDN for the user in E.164 format (minus the leading +)</td>
+</tr>
+<tr>
+<td>home_phone_number</td>
+<td>integer</td>
+<td>Phone number for the user in E.164 format (minus the leading +) <strong>OPTIONAL</strong></td>
+</tr>
+<tr>
+<td>email_address</td>
+<td>string(64)</td>
+<td>Email address of the user</td>
+</tr>
+<tr>
+<td>autoload_type</td>
+<td>enum</td>
+<td>percentage or monetary for performing an autoload to a users Plutus Master Card.</td>
+</tr>
+<tr>
+<td>autoload_value</td>
+<td>integer</td>
+<td>When percentage enter a percentage from 0 to 100 for 0% or 100% for example.  When monetary, it allows specifying an amount in cents to autoload i.e. 200000 for R 2000.00)</td>
+</tr>
+<tr>
+<td>key_field</td>
+<td>varchar(32)</td>
+<td>Your key field for the user (i.e. user id on your system)</td>
+</tr>
+</tbody></table>
+<h3 id='defaults'>Defaults</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>autoload_type</td>
+<td>enum</td>
+<td>percentage</td>
+<td></td>
+</tr>
+<tr>
+<td>autoload_value</td>
+<td>integer</td>
+<td>0</td>
+<td>Can be changed by the user once they have been allocated a pre-paid debit card</td>
+</tr>
+<tr>
+<td>assign_to_agent</td>
+<td>string(36)</td>
+<td>null</td>
+<td>Specifies which agent should be assigned to the user being created</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-customer'>Delete a customer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/934abcb1-ab94-4bbf-9435-b8ac15e825e2"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User tombstoned."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint tombstones a specific user and cancels any products and debit cards a customer has.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user to tombstone</td>
+</tr>
+</tbody></table>
+<h2 id='resend-welcome-sms'>Resend Welcome SMS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/5370faea-ec41-11e5-b754-13ac8769ead7/resendwelcomesms"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e7c18d8-535b-11e7-b086-dfc8a38f9f0f"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP REQUEST</h3>
+<p><code>POST /api/v1/users/&lt;USER&gt;/resendwelcomesms</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user to resend the SMS message to</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-3'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>job_id</td>
+<td>string (36)</td>
+<td>UUID of the queued job to send the welcome sms out</td>
+</tr>
+</tbody></table>
+<h2 id='search-users-customers'>Search Users (Customers)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users?first_name=Clifton"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ee3314c-40dd-11e5-9bc4-1bbf7f69525d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLIFTON MARIO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HERADIEN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZAID"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id_document_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"271234567890"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all users which can be paginated over via the API.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of users to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit users</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td></td>
+<td>If specified searches for the users first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td></td>
+<td>If specified searches for the users surname</td>
+</tr>
+<tr>
+<td>id_type</td>
+<td>ZAID</td>
+<td>Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)</td>
+</tr>
+<tr>
+<td>id_document_number</td>
+<td></td>
+<td>Searches for the given government ID</td>
+</tr>
+<tr>
+<td>mobile_number</td>
+<td></td>
+<td>If specified searches for the given mobile number</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-4'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string (4)</td>
+<td>Title of the user (i.e. Mr / Mrs / Ms / Dr / Prof)</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string (64)</td>
+<td>First names of the user (needs to be in CAPITALS for the juristic person)</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string (64)</td>
+<td>Surname of the user (needs to be in CAPITALS for the juristic person)</td>
+</tr>
+<tr>
+<td>id_type</td>
+<td>enum</td>
+<td>Identification Document Type (ZAID == South African ID / PASSPORT = Passport / ZAASYLUM = South African Asylum Document)</td>
+</tr>
+<tr>
+<td>id_document_number</td>
+<td>string (32)</td>
+<td>Document number associated with the supplied Identification Document Type (i.e. for ZAID you supply the South African ID number / PASSPORT you supply the passport number)</td>
+</tr>
+<tr>
+<td>mobile_number</td>
+<td>integer</td>
+<td>MSISDN for the user in E.164 format (minus the leading +)</td>
+</tr>
+</tbody></table>
+<h1 id='documents'>Documents</h1>
+<p>As part of the regulatory requirements, documentation is collected from 
+customers as part of the process of KYC / FICA.</p>
+<h2 id='list-documents-for-a-user'>List Documents for a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/documents"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"895b2fcc-545f-11e7-8279-67635886d357"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55af7356-2641-11e6-9641-51a94b3cc203 - POID - GOVID - Vin Diesel.pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f9ef9c744b05f339b4d74c83a5e98c361ab8a7c35f95532e0ec977e71bfd321"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">3718903</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01 15:33:20"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a9e349c-545f-11e7-9a2b-273aed7d1a54"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16517ff6-c74f-11e6-ab92-1708c4dea62c - POA - GOVID - Vin Diesel.pdf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78d6405718fda873f99a60b722138451c136576c9f665139e0de0d78cc4be6ff"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640282</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01 15:33:45"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a collection of debit cards belonging to the specific user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/documents</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose list of uploaded documents you would like to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the document</td>
+</tr>
+<tr>
+<td>document_type</td>
+<td>integer</td>
+<td>Indicates the type of document.  1 == Proof of Identification (South African ID / Passport / South African Asylum Document). 2 == Proof of address.  3 == Proof of Income.  4 == Application Form.  5 == Proof of Employment.  6 == Selfie. 7 == Affidavit. 9 == Home Visit. 10 == Proof of Payment (i.e. deposit slip / atm slip / payslip / etc.)</td>
+</tr>
+<tr>
+<td>file_name</td>
+<td>string (255)</td>
+<td>File name including a random uuid at the front of the file name</td>
+</tr>
+<tr>
+<td>file_hash</td>
+<td>string (255)</td>
+<td>sha256 of the uploaded file</td>
+</tr>
+<tr>
+<td>file_size</td>
+<td>integer</td>
+<td>Size of the uploaded file</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>Datetime in GMT that the file was uploaded</td>
+</tr>
+</tbody></table>
+<h2 id='upload-a-document'>Upload a Document</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/documents"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-F</span><span class="o">=</span>@FILE.pdf
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"895b2fcc-545f-11e7-8279-67635886d357"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55af7356-2641-11e6-9641-51a94b3cc203 - POID - GOVID - Vin Diesel.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"file_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f9ef9c744b05f339b4d74c83a5e98c361ab8a7c35f95532e0ec977e71bfd321"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">3718903</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01 15:33:20"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows for uploading of documents from a remote system.  The encoding type
+needs to be multipart/form-data.  The file needs to be the equivalent of a input type of
+file with a name of file:</p>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">enctype=</span><span class="s">"multipart/form-data"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/documents</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user who you want to upload a document for</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the document</td>
+</tr>
+<tr>
+<td>document_type</td>
+<td>integer</td>
+<td>Indicates the type of document.  1 == Proof of Identification (South African ID / Passport / South African Asylum Document). 2 == Proof of address.  3 == Proof of Income.  4 == Application Form.  5 == Proof of Employment.  6 == Selfie. 7 == Affidavit. 9 == Home Visit. 10 == Proof of Payment (i.e. deposit slip / atm slip / payslip / etc.)</td>
+</tr>
+<tr>
+<td>file_name</td>
+<td>string (255)</td>
+<td>File name including a random uuid at the front of the file name</td>
+</tr>
+<tr>
+<td>file_hash</td>
+<td>string (255)</td>
+<td>sha256 of the uploaded file</td>
+</tr>
+<tr>
+<td>file_size</td>
+<td>integer</td>
+<td>Size of the uploaded file</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>Datetime in GMT that the file was uploaded</td>
+</tr>
+</tbody></table>
+<h2 id='download-a-document'>Download a Document</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/documents/895b2fcc-545f-11e7-8279-67635886d357"</span>
+</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/documents/&lt;DOCUMENT&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user who you want to download a document of</td>
+</tr>
+<tr>
+<td>DOCUMENT</td>
+<td>The UUID of the document you want to download</td>
+</tr>
+</tbody></table>
+<h1 id='wallets'>Wallets</h1>
+<p>Plutus Wallets (accounts) provide a virtual account for depositing of money into one of the Plutus deposit accounts.</p>
+
+<p>The Plutus system uses the following references for allocating money which has been deposited into a users wallet:</p>
+
+<table><thead>
+<tr>
+<th>Reference</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Account Number</td>
+<td>Wallet Account Number (i.e. goes into the specified wallet of the user)</td>
+</tr>
+<tr>
+<td>South African ID Number</td>
+<td>South African issued Identity Document from Home Affairs</td>
+</tr>
+<tr>
+<td>MSISDN</td>
+<td>MSISDN of the users Mobile Phone Number</td>
+</tr>
+<tr>
+<td>Passport Number</td>
+<td>Foreigners passport issued by a foreign country</td>
+</tr>
+<tr>
+<td>Asylum Document Number</td>
+<td>Asylum document issued by Home Affairs to a foreigner</td>
+</tr>
+</tbody></table>
+
+<p>When a user has multiple wallets, the first wallet that was created for the user
+would receive the money when the wallets account number is not used in the deposit.</p>
+<h2 id='listing-wallets-for-a-user'>Listing wallets for a user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/accounts"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecb23a8c-99dd-11e4-912d-ef2aab9046d8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44445555666"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim's Wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a collection of wallets belonging to the specific user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/accounts</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the wallet</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Account number for the wallet</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string (64)</td>
+<td>Description of the wallet (i.e Firstname&#39;s Wallet)</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>enum</td>
+<td><code>wallet</code> for wallet</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>integer</td>
+<td>ISO4217 Code Number</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>integer</td>
+<td>balance of the wallet in cents</td>
+</tr>
+</tbody></table>
+<h2 id='fetching-a-mini-statement-for-a-users-wallet'>Fetching a mini statement for a users wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/accounts/ecb23a8c-99dd-11e4-912d-ef2aab9046d8/ministatement"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alc80075"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"statement_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFT IN FEE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REF: 0801234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-90"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61hk1xyo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"statement_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT TRANSFER"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0801234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a mini statement for the specific users wallet.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;UUID&gt;/accounts/&lt;ACCOUNT&gt;/ministatement</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UUID</td>
+<td>The UUID of the user to retrieve</td>
+</tr>
+<tr>
+<td>ACCOUNT</td>
+<td>The UUID of the account to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>txn_ref</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>statement_date</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>reference1</td>
+<td>string (32)</td>
+<td>Transaction classification</td>
+</tr>
+<tr>
+<td>reference2</td>
+<td>string (64)</td>
+<td>Narrative of the transaction</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of the transaction in cents</td>
+</tr>
+</tbody></table>
+<h2 id='listing-transactions-for-a-users-wallet'>Listing transactions for a users wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/accounts/ecb23a8c-99dd-11e4-912d-ef2aab9046d8/ministatement"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alc80075"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"statement_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFT IN FEE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REF: 0801234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-90"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61hk1xyo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"statement_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT TRANSFER"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0801234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific user.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;UUID&gt;/accounts/&lt;ACCOUNT&gt;/transactions</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of users to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit users</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UUID</td>
+<td>The UUID of the user to retrieve</td>
+</tr>
+<tr>
+<td>ACCOUNT</td>
+<td>The UUID of the account to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-3'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>txn_ref</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>statement_date</td>
+<td>string (36)</td>
+<td>UUID of the user</td>
+</tr>
+<tr>
+<td>reference1</td>
+<td>string (32)</td>
+<td>Transaction classification</td>
+</tr>
+<tr>
+<td>reference2</td>
+<td>string (64)</td>
+<td>Narrative of the transaction</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of the transaction in cents</td>
+</tr>
+</tbody></table>
+<h1 id='debitcards'>Debitcards</h1>
+<p>The system provides interfaces for management of Prepaid debit cards.  Not all prepaid
+debit card providers provide access to real time transactional information and card
+balances.</p>
+
+<aside class="notice">
+On test we do not provide an idea of the balances for a card.  This will be added
+in the near future once the mock card management implementation has been
+completed.
+</aside>
+<h2 id='list-debit-cards-allocated-to-a-user'>List Debit Cards allocated to a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53230000006"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5c0b0b8-9c9d-11e4-afbc-f3a644f22402"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacques Freedom MasterCard"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debitcard"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12268"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12268"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"masked_cardnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456XXXXXX0434"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53230966296"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7d03afc-27f7-11e5-b016-bba1668567bc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacques Diamond MasterCard"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debitcard"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98765"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9966"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"masked_cardnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456XXXXXX0657"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a collection of debit cards belonging to the specific user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit cards you would like to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the wallet</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Account number for the debit card (this is not the account number on the debit card but our internal identifier)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string (64)</td>
+<td>Description of the wallet (i.e Firstname&#39;s Debit Card)</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>enum</td>
+<td><code>debitcard</code> for debit card</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>integer</td>
+<td>ISO4217 Code Number</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>integer</td>
+<td>Amount of money in cents in the ledger / actual balance (including items with a preauth)</td>
+</tr>
+<tr>
+<td>available_balance</td>
+<td>integer</td>
+<td>Amount of money in cents in the available balance (excluding preauths)</td>
+</tr>
+<tr>
+<td>masked_cardnumber</td>
+<td>varchar(16)</td>
+<td>Masked card number</td>
+</tr>
+</tbody></table>
+
+<p>There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
+Need to also display the sponsoring bank for a debit card as well (Bank A vs Bank B).</p>
+<h2 id='list-debit-card-allocated-to-a-user'>List Debit Card allocated to a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/e7d03afc-27f7-11e5-b016-bba1668567bc"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53230966296"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7d03afc-27f7-11e5-b016-bba1668567bc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacques Diamond MasterCard"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debitcard"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98765"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9966"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"masked_cardnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456XXXXXX0657"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the specified debit card belonging to the specific user.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards/&lt;CARD&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit cards you would like to retrieve</td>
+</tr>
+<tr>
+<td>CARD</td>
+<td>The UUID of the debit cards you would like to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the wallet</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Account number for the debit card (this is not the account number on the debit card but our internal identifier)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string (64)</td>
+<td>Description of the wallet (i.e Firstname&#39;s Debit Card)</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>enum</td>
+<td><code>debitcard</code> for debit card</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>integer</td>
+<td>ISO4217 Code Number</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>integer</td>
+<td>Amount of money in cents in the ledger / actual balance (including items with a preauth)</td>
+</tr>
+<tr>
+<td>available_balance</td>
+<td>integer</td>
+<td>Amount of money in cents in the available balance (excluding preauths)</td>
+</tr>
+<tr>
+<td>masked_cardnumber</td>
+<td>varchar(16)</td>
+<td>Masked card number</td>
+</tr>
+</tbody></table>
+
+<p>There will be some changes for differences between available / reserved / actual balance on cards coming shortly in the implementation.
+Need to also display the sponsoring bank for a debit card as well (Bank A vs Bank B).</p>
+<h2 id='fetch-mini-statement-for-a-debit-card'>Fetch mini statement for a debit card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/ministatement"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards/&lt;CARD&gt;/ministatement</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit card you would like to retrieve</td>
+<td></td>
+</tr>
+<tr>
+<td>CARD</td>
+<td>The UUID of the users debit card you would like to view the transactions for</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='fetch-statement-for-a-debit-card'>Fetch statement for a Debit Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/statement/30"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards/&lt;CARD&gt;/statement/&lt;DAYS&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit card you would like to retrieve</td>
+<td></td>
+</tr>
+<tr>
+<td>CARD</td>
+<td>The UUID of the users debit card you would like to view the transactions for</td>
+<td></td>
+</tr>
+<tr>
+<td>DAYS</td>
+<td>The number of days you want a statement for 30 / 60 / 90 days</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='fetch-transaction-history-for-a-debit-card'>Fetch transaction history for a Debit Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/transactions"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<h2 id='example-of-customer-with-no-transactions-in-the-past-180-days'>Example of customer with no transactions in the past 180 days</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53231234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f9a869e-5cd3-11e7-bf63-7396dac0ab8a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vimala Debitcard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debitcard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"masked_card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456XXXXXX2345"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jcb7aqlm"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin fee for primary card for year 2017 and month of June"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"debit"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"credit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"processed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-30 23:13:16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cleared_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-30 23:13:16"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='example-of-customer-with-no-transactions-in-the-past-90-days'>Example of customer with no transactions in the past 90 days</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53231234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f9a869e-5cd3-11e7-bf63-7396dac0ab8a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gandalf Debitcard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debitcard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"masked_card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456XXXXXX1234"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards/&lt;CARD&gt;/transactions</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit card you would like to retrieve</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='report-debit-card-as-being-lost-stolen'>Report debit card as being lost / stolen</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/996fdda6-c4d7-4527-b14d-a0b43a149f97/stopcard"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card has been stopped."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows for stopping of a debit card belong to a user.  You can at a later stage issue a replacement card to the user.</p>
+
+<aside class="notice">
+Please note once a card is marked to the Postilion Hotcard List it cannot be reversed.  A new card would need to be issued in this case.
+</aside>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards/&lt;CARD&gt;/stopcard</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit card you would like to retrieve</td>
+<td></td>
+</tr>
+<tr>
+<td>CARD</td>
+<td>The UUID of the users debit card you would like to view the transactions for</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='issue-a-debit-card'>Issue a Debit Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/issue"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-d</span> <span class="s1">'{"cardnumber":"12345678901234","sequence_number":"123456"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53231672318"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c12451bc-66fd-11e7-8b56-eea0a39cd77b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"masked_card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"531162XXXXXX5932"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows for issuing of a debit card to a user.  Additional debit cards are added as secondary cards on the users profile.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user to whom you wish to issue a debit cards</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-3'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the wallet</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Account number for the debit card (this is not the account number on the debit card but our internal identifier)</td>
+</tr>
+<tr>
+<td>masked_cardnumber</td>
+<td>varchar(16)</td>
+<td>Masked card number</td>
+</tr>
+</tbody></table>
+<h2 id='replace-a-debit-card'>Replace a Debit Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/debitcards/e7d03afc-27f7-11e5-b016-bba1668567bc/replace"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-d</span> <span class="s1">'{"cardnumber":"12345678901234","sequence_number":"123456"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53230966296"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7d03afc-27f7-11e5-b016-bba1668567bc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacques Debit Card"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debitcard"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98765"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9966"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"masked_cardnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456XXXXXX0657"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows for replacing of a debit card belong to a user.</p>
+
+<aside class="notice">
+Dependant on which sponsor bank is being utilised, cards a user has may be restricted to a ringfenced group.  If an error occurs on replacement, contact the Call Centre.
+</aside>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/debitcards/&lt;CARD&gt;/replace</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user whose debit card you would like to retrieve</td>
+<td></td>
+</tr>
+<tr>
+<td>CARD</td>
+<td>The UUID of the users debit card you would like to report as lost / stolen</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-4'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h1 id='beneficiaries'>Beneficiaries</h1>
+<p>Beneficiaries are used to make payments from one person to another person.
+The recipient can have an account which is an onnet account (on Plutus) or an
+offnet account (which is held at a South African Bank).</p>
+
+<p>Plutus integrates into the South African National Payment System to provide
+EFT Credit services to users to move money from their Plutus account to other
+bank accounts.</p>
+<h2 id='list-beneficiaries-for-a-user'>List Beneficiaries for a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/beneficiaries"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0ef6c2ca-40c8-11e5-99a6-df67e1f2a887"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bank_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678910"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"my_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"their_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cliff"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ef6c2ca-40c8-11e5-99a6-df67e1f2a887"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bank_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"051001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"063010585"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"my_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"their_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cliff"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint lists beneficiaries belonging to a specific user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/beneficiaries</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user the beneficiary belongs to</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the beneficiary</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string(32)</td>
+<td>Users name for the recipient (i.e. Telkom - Home Phone)</td>
+</tr>
+<tr>
+<td>bank_id</td>
+<td>integer</td>
+<td>Bank Idenfier</td>
+</tr>
+<tr>
+<td>branch_code</td>
+<td>integer</td>
+<td>Branch code for the bank account of the beneficiary - where possible please use the banks universal branch code</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Bank Account Number for the beneficiary typically 9 to 11 digits in length</td>
+</tr>
+<tr>
+<td>reference1</td>
+<td>string(32)</td>
+<td>Users reference for their account transaction list when making the payment</td>
+</tr>
+<tr>
+<td>reference2</td>
+<td>string(32)</td>
+<td>Reference displayed on the beneficiaries bank transaction list</td>
+</tr>
+</tbody></table>
+<h2 id='create-beneficiary'>Create Beneficiary</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{"name":"Vendor Name","bank_id":"1","branch_code":"000000","account_number":"53220000024","account_type":"1","reference1":"Vendor Name","reference2":"My Bill ID"}'</span> <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/beneficiaries"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80d907f3-4f6f-4443-bafc-d1165509da61"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates the specified beneficiary for the specific user.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/users/&lt;UUID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user the beneficiary belongs to</td>
+</tr>
+</tbody></table>
+<h3 id='json-payload-parameters'>JSON Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string(32)</td>
+<td>Users name for the recipient (i.e. Telkom - Home Phone)</td>
+</tr>
+<tr>
+<td>bank_id</td>
+<td>integer</td>
+<td>Bank Idenfier</td>
+</tr>
+<tr>
+<td>branch_code</td>
+<td>integer</td>
+<td>Branch code for the bank account of the beneficiary - where possible please use the banks universal branch code</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Bank Account Number for the beneficiary typically 9 to 11 digits in length</td>
+</tr>
+<tr>
+<td>reference1</td>
+<td>string(32)</td>
+<td>Users reference for their account transaction list when making the payment</td>
+</tr>
+<tr>
+<td>reference2</td>
+<td>string(32)</td>
+<td>Reference displayed on the beneficiaries bank transaction list</td>
+</tr>
+</tbody></table>
+<h2 id='delete-beneficiary'>Delete Beneficiary</h2>
+<p>This endpoint tombstones the specific beneficiary belonging to a specific user.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://127.0.0.1.xip.io/api/v1/users/d19bff36-4733-11e5-946b-9ba904d8238e/beneficiaries/2dfd6a70-c4b7-11e5-90ee-ddee8a7cd8b5"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/beneficiaries/&lt;BENEFICIARY&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user the beneficiary belongs to</td>
+</tr>
+<tr>
+<td>BENEFICIARY</td>
+<td>The UUID of the beneficiary being tombstoned</td>
+</tr>
+</tbody></table>
+<h2 id='pay-a-beneficiary'>Pay a Beneficiary</h2>
+<p>This endpoint creates a payment the specific beneficiary belonging to a specific user.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/beneficiaries/&lt;BENEFICIARY&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user the beneficiary belongs to</td>
+</tr>
+<tr>
+<td>BENEFICIARY</td>
+<td>The UUID of the beneficiary being tombstoned</td>
+</tr>
+</tbody></table>
+<h3 id='post-parameters'>POST Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>Amount of money to transfer to the user in cents</td>
+</tr>
+</tbody></table>
+<h2 id='list-banks-for-use-when-creating-a-beneficiary'>List Banks (for use when creating a beneficiary)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/banks"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Plutus"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABSA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"632005"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"African Bank"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"430000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/banks</code></p>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bank_name</td>
+<td>string (64)</td>
+<td>Name of the bank</td>
+</tr>
+<tr>
+<td>default_branch_code</td>
+<td>integer</td>
+<td>The central or universal branch code for the given bank</td>
+</tr>
+</tbody></table>
+<h1 id='companies'>Companies</h1><h2 id='get-all-companies-customers'>Get All Companies (Customers)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/companies"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ee3314c-40dd-11e5-9bc4-1bbf7f69525d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob the builder"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all companies which can be paginated over via the API.  Typically for agencies this is just your agency account.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/companies</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of companies to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit companies</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the company</td>
+</tr>
+</tbody></table>
+<h2 id='create-payments-for-release'>Create payments for release</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://127.0.0.1.xip.io/api/v1/companies/UUID/payments"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-d</span> <span class="s1">'[{"branch_code":"00000000","account_number":"12345678901","reference1":"Payment to Tarsai","reference2":"Payment from Mandla Enterprises","amount":"123425"},{"branch_code":"00000000","account_number":"12345678901","reference1":"Payment to Ayibongwe","reference2":"Payment from Mandla Enterprises","amount":"123425"}]'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"batch_uuid"</span><span class="p">:</span><span class="s2">"2b1c1f24-c5ff-11e5-99c3-5a8f9bcf73ec"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>JSON Schema for Payments</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://json-schema.org/draft-04/schema#"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Root schema."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Defines payments to be queued for release via a company authorised contact who has transact rights to the company account"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0 schema."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Describes a single beneficiary payment"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0/branch_code"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branch Code"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branch code for the bank account / wallet account.  Default to 000000 for an on Plutus transaction else use the universal branch code for the bank."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"branch_code"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0/account_type"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank Account Type"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank account type. 1 == Current / Cheque Account | 2 == Savings account | 3 == Transmission account"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_type"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0/account_number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank Account / Wallet Account Number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The bank account number or wallet account number for the recipient of the payment"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0/reference1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your reference"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is the reference that goes onto your business accounts statement"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0/reference2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beneficiary Reference"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is the reference that goes onto your business accounts statement"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jsonschema.net/0/amount"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amount in ZAR cents"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amount of money to pay over to the recipient in ZAR cents"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"branch_code"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_type"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"minItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is used to create payment batches for release on the Plutus Platform.  It supposed both On Net (i.e. to other users on the platform)
+or Off Net (i.e. to an off platform bank account such as a vendors bank account at any bank).  The branch code 000000 indicates that the payment
+is an On Net payment.  <code>account_type</code> should be 1 for an On Net transaction and <code>branch_code</code> 000000.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://127.0.0.1.xip.io/api/v1/companies/UUID/payments</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UUID</td>
+<td>The UUID of the company to load payment instructions against</td>
+</tr>
+</tbody></table>
+<h3 id='json-payload-parameters'>JSON Payload Parameters</h3>
+<p>Uses an array of arrays of the following parameters.  Expects to find 1 or more arrays with the following keys:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>branch_code</td>
+<td>string(6)</td>
+<td>Branch code (i.e. 000000 for On Net, 580105 for Investec, etc.)</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>integer</td>
+<td>Bank Account Type. 1 == Current / Cheque Account</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>The bank account number or wallet account number for the recipient of the payment</td>
+</tr>
+<tr>
+<td>reference1</td>
+<td>string(16)</td>
+<td>This is the reference that goes onto your business accounts statement</td>
+</tr>
+<tr>
+<td>reference2</td>
+<td>string(16)</td>
+<td>This is the reference that goes onto your beneficiaries accounts statement</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of money to pay over to the recipient in ZAR cents</td>
+</tr>
+</tbody></table>
+<h2 id='get-payment-batches'>Get Payment Batches</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/companies/UUID/payments"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"batches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95e6caf4-eb8c-11e5-9feb-ab8eea7dff53"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">84000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9623cef4-eb8c-11e5-b16b-4341e2905df5"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">294000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all payments associated with a payment batch which can be paginated over via the API.  Typically for agencies this is just your agency account.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/companies/UUID/payments/BATCH_UUID</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UUID</td>
+<td>The UUID of the company to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of companies to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit companies</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the company</td>
+</tr>
+</tbody></table>
+<h2 id='get-payment-batch-status'>Get Payment Batch Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/companies/UUID/payments/BATCH_UUID"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"batches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95e6caf4-eb8c-11e5-9feb-ab8eea7dff53"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">84000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9623cef4-eb8c-11e5-b16b-4341e2905df5"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">294000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all payments associated with a payment batch which can be paginated over via the API.  Typically for agencies this is just your agency account.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/companies/UUID/payments/BATCH_UUID</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UUID</td>
+<td>The UUID of the company to retrieve</td>
+</tr>
+<tr>
+<td>BATCH_UUID</td>
+<td>The BATCH_UUID of the company to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of companies to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit companies</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-3'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the company</td>
+</tr>
+</tbody></table>
+<h1 id='business-accounts'>Business Accounts</h1>
+<p>Plutus Business Accounts provide a virtual account for depositing of money into one of the Plutus deposit accounts.</p>
+
+<p>The Plutus system uses the following references for allocating money which has been deposited into a company&#39;s business account:</p>
+
+<table><thead>
+<tr>
+<th>Reference</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Account Number</td>
+<td>Wallet Account Number (i.e. goes into the specified business account of the company)</td>
+</tr>
+</tbody></table>
+<h2 id='listing-business-accounts-for-a-company'>Listing business accounts for a company</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/companies/d19bff36-4733-11e5-946b-9ba904d8238e/accounts"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecb23a8c-99dd-11e4-912d-ef2aab9046d8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44445555666"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim's Wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a collection of wallets belonging to the specific user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/companies/&lt;USER&gt;/accounts</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>USER</td>
+<td>The UUID of the user to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string (36)</td>
+<td>UUID of the wallet</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>integer</td>
+<td>Account number for the wallet</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string (64)</td>
+<td>Description of the wallet (i.e Company Name&#39;s Wallet)</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>enum</td>
+<td><code>business</code> for a business account</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>integer</td>
+<td>balance of the business account in cents</td>
+</tr>
+</tbody></table>
+<h2 id='listing-transactions-for-a-company-39-s-business-account'>Listing transactions for a company&#39;s business account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/companies/d19bff36-4733-11e5-946b-9ba904d8238e/accounts/ecb23a8c-99dd-11e4-912d-ef2aab9046d8/transactions"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecb23a8c-99dd-11e4-912d-ef2aab9046d8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44445555666"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim's Wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alc80075"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"statement_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFT IN FEE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REF: 0801234567"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-90"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"txn_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61hk1xyo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"statement_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reference1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT TRANSFER"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reference2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0801234567"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific business accounts transactions.  Without specifying any pagination
+options using the Query Parameters specified below, you get a maximum  of 100 transactions and you can
+then paginate over the resultset to retreive rows 101 to 200 then rows 201 to 300 etc.  The timespan
+is the last 60 days on the account (presently disabled timespan for testing purposes for onboarding).</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://127.0.0.1.xip.io/api/v1/companies/&lt;UUID&gt;/accounts/&lt;ACCOUNTUUID&gt;/transactions</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>Specifies the maximum number of users to fetch</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Starts from the first user up to limit users</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UUID</td>
+<td>The UUID of the company to retrieve</td>
+</tr>
+<tr>
+<td>ACCOUNTUUID</td>
+<td>The UUID of the account associated with the company listed above</td>
+</tr>
+</tbody></table>
+<h3 id='response-result-set-2'>Response Result Set</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>txn_ref</td>
+<td>string(8)</td>
+<td>Transaction reference</td>
+</tr>
+<tr>
+<td>statement_date</td>
+<td>date</td>
+<td>Date of a transaction on an account (note deposits display the date they appear on the bank statment from Standard Bank the associated transactional fees are reflected on the date they occurred on the account)</td>
+</tr>
+<tr>
+<td>reference1</td>
+<td>string(32)</td>
+<td>Transaction Type Narrative</td>
+</tr>
+<tr>
+<td>reference2</td>
+<td>string(64)</td>
+<td>Description Narrative</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount in ZAR cents</td>
+</tr>
+</tbody></table>
+<h1 id='prepaid'>Prepaid</h1><h2 id='list-mobile-networks'>List mobile networks</h2>
+<p>Retreives a list of mobile network providers and fixed line providers who vend
+Prepaid Airtime Vouchers.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://127.0.0.1.xip.io/api/v1/prepaid/networks"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=YOURTOKEN"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vodacom"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MTN"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CellC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virgin Mobile"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neotel"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Telkom Mobile (8ta)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the list of mobile networks.</p>
+<h3 id='http-request'>HTTP Request</h3><h2 id='list-available-vouchers-for-a-network'>List available vouchers for a network</h2><h2 id='vend-an-airtime-voucher'>Vend an airtime voucher</h2><div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div>
+<aside class="notice">Plutus provides the PIN and voucher serial number from the mobile networks in order to phone their customer support if their are issues with your prepaid vouchers.</aside>
+
+<blockquote>
+<p>Example of the SMS message sent out:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>Thankyou for buying your airtime from ##BRAND##.  Dial ##USSD## to redeem. Customer Care : ##CUSTOMERCARE## Serial: ##SERIAL##
+</code></pre></div><h2 id='vend-pinless-airtime'>Vend pinless airtime</h2>
+<aside class="warning">If you vend pinless airtime to an MSISDN not on the correct network (i.e. trying to vend MTN to a Vodacom MSISDN), it takes up to 24 hours for the status to reflect as failed from the network and the amount for the transaction to be refunded to the user.</aside>
+<h2 id='lookup-electricity-customer-information'>Lookup Electricity Customer Information</h2>
+<blockquote>
+<p>Example request for retrieving the customer information for the specified meter number:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div><h2 id='vend-electricity-sts-token'>Vend Electricity STS Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div>
+<p>This endpoint retrieves all users.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://127.0.0.1.xip.io/api/v1/users/&lt;USER&gt;/prepaid/electricity</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meter_no</td>
+<td>integer</td>
+<td>STS Meter number</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount in rands of electricity being purchased</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>The Plutus Platform API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request has errors passing parameter validation</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- The API key provided is incorrect</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The requested resource is not available</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resource could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The resource requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='frequently-asked-questions'>Frequently Asked Questions</h1><h2 id='how-do-i-validate-a-south-african-identification-number'>How do I validate a South African Identification Number?</h2>
+<p>There is no need to understand the composition of the number, just validation which can be done using
+sample code from the following URL&#39;s:</p>
+
+<p><a href="http://knowles.co.za/generating-south-african-id-numbers/">Sample code for Java and PHP</a></p>
+
+<p>For testing purposes, you can utilise the following ID numbers when adding a user via the API.</p>
+
+<table><thead>
+<tr>
+<th>ID Number</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>8510290194083</td>
+<td>Valid ID Number</td>
+</tr>
+<tr>
+<td>9007263637083</td>
+<td>Invalid ID Number - should return an error when using this as an ID number on user creation.</td>
+</tr>
+</tbody></table>
+
+<p>It is advisable that you also take the first six digits and figure out if the date of birth entered by the customer
+matches the date of birth on in their South African ID Document number.</p>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IDValidator</span>
+<span class="o">{</span>
+ <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">generateLuhnDigit</span><span class="o">(</span><span class="nc">String</span> <span class="n">inputString</span><span class="o">)</span>
+ <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">inputString</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+  <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">multiple</span> <span class="o">=</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+   <span class="n">count</span><span class="o">++;</span>
+   <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">multiple</span> <span class="o">*</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">""</span><span class="o">+</span><span class="n">inputString</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+   <span class="n">temp</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="nc">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">temp</span> <span class="o">/</span> <span class="mi">10</span><span class="o">)</span> <span class="o">+</span> <span class="o">(</span><span class="n">temp</span> <span class="o">%</span> <span class="mi">10</span><span class="o">));</span>
+   <span class="n">total</span> <span class="o">+=</span> <span class="n">temp</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="n">total</span> <span class="o">=</span> <span class="o">(</span><span class="n">total</span> <span class="o">*</span> <span class="mi">9</span><span class="o">)</span> <span class="o">%</span> <span class="mi">10</span><span class="o">;</span>
+
+  <span class="k">return</span> <span class="n">total</span><span class="o">;</span>
+ <span class="o">};</span>
+
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">checkIDNumber</span><span class="o">(</span><span class="nc">String</span> <span class="n">idNumber</span><span class="o">)</span>
+ <span class="o">{</span>
+  <span class="nc">String</span> <span class="n">number</span> <span class="o">=</span> <span class="n">idNumber</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">idNumber</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+  <span class="k">return</span> <span class="nf">generateLuhnDigit</span><span class="o">(</span><span class="n">number</span><span class="o">)</span> <span class="o">==</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">""</span><span class="o">+</span><span class="n">idNumber</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">idNumber</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h2 id='using-php-how-do-i-get-the-json-back-on-400-status-returns-with-guzzle'>Using PHP how do I get the JSON back on 400+ status returns with Guzzle?</h2>
+<p>If you are integrating using PHP, you may want to use <a href="http://docs.guzzlephp.org/en/latest/">Guzzle</a> for implementing remote web requests.  You can easily install it using composer.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>composer require guzzlehttp/guzzle:~6.0
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+        <span class="mf">...</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span>
+                <span class="s1">'POST'</span><span class="p">,</span>
+                <span class="s1">'/api/v1/users'</span><span class="p">,</span>
+                <span class="p">[</span>
+                    <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="s1">'{...}'</span><span class="p">,</span>
+                    <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token token=YOURPLUTUSTOKEN'</span><span class="p">,</span>
+                    <span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\ClientException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s1">'400'</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getStatusCode</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nv">$body</span> <span class="o">=</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">();</span>
+                <span class="mf">...</span>
+            <span class="p">}</span>
+
+            <span class="mf">...</span>
+        <span class="p">}</span>
+</code></pre></div><h2 id='using-java-how-do-i-get-the-json-back-on-400-status-returns'>Using Java how do I get the JSON back on 400+ status returns?</h2>
+<p><a href="http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4513568">Workaround from bugs.java.com</a></p>
+
+<blockquote>
+<p>Example Java Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpURLConnection</span> <span class="n">httpConn</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span><span class="n">_urlConnection</span><span class="o">;</span>
+<span class="nc">InputStream</span> <span class="n">_is</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">httpConn</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">_is</span> <span class="o">=</span> <span class="n">httpConn</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+     <span class="o">/</span> <span class="n">error</span> <span class="n">from</span> <span class="n">server</span> <span class="o">/</span>
+    <span class="n">_is</span> <span class="o">=</span> <span class="n">httpConn</span><span class="o">.</span><span class="na">getErrorStream</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div><h1 id='glossary'>Glossary</h1>
+<table><thead>
+<tr>
+<th>Acronym</th>
+<th>Definition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>atm</td>
+<td>Automated Teller Machine</td>
+</tr>
+<tr>
+<td>card bearer</td>
+<td>A card holder</td>
+</tr>
+<tr>
+<td>card holder</td>
+<td>A customer who has been issued a prepaid debit card</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="java">java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
