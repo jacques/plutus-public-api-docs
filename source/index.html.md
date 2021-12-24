@@ -32,4 +32,10 @@ includes:
 search: true
 
 code_clipboard: true
+
+meta:
+  - name: author
+    content: Jacques Marneweck
+  - name: description
+    content: Documentation for the Plutus Public API
 ---
